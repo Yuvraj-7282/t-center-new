@@ -17,7 +17,7 @@ function NavList() {
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-medium"
+        className="p-1 font-bold"
       >
         <Search />
       </Typography>
@@ -25,7 +25,7 @@ function NavList() {
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-medium"
+        className="p-1 font-bold"
       >
         <Link to={'/'}>
             Home
@@ -35,7 +35,7 @@ function NavList() {
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-medium"
+        className="p-1 font-bold"
       >
         <Link>
           Products
@@ -45,7 +45,17 @@ function NavList() {
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-medium"
+        className="p-1 font-bold"
+      >
+        <Link>
+          Customize
+        </Link>
+      </Typography>
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-bold"
       >
         <Link>
           Cart
@@ -55,7 +65,7 @@ function NavList() {
         as="li"
         variant="small"
         color="blue-gray"
-        className="p-1 font-medium"
+        className="p-1 font-bold"
       >
         <Link>
           Account
@@ -80,7 +90,7 @@ function NavBar() {
   }, []);
  
   return (
-    <nav className="w-full shadow-md px-6 py-2">
+    <nav className="w-full shadow-md px-10 py-2 bg-yellow-400">
       <div className="flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"

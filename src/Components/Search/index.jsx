@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Input, ListItemSuffix } from '@material-tailwind/react'
 
 const searchData = [
     {
@@ -38,8 +37,8 @@ function Search() {
   const filteredData = searchData.filter(obj => obj.name.toLowerCase().includes(search.toLowerCase())).slice(0,8);
 
   return (
-    <div className='w-full lg::w-fit relative'>
-        <Input label='Search' onChange={(e) => setSearch(e.target.value)}/>
+    <div className='search w-full lg::w-fit relative'>
+        <input label='Search' placeholder="Search" className="search-input h-8 rounded-md px-3 shadow-md outline-black" onChange={(e) => setSearch(e.target.value)}/>
         {search && 
             <div className='h-72 z-10 w-full bg-white rounded-sm shadow-md absolute px-1 overflow-y-auto overflow-x-hidden'>
 

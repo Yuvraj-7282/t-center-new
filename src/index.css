@@ -23,3 +23,11 @@ body{
 ::-webkit-scrollbar-thumb{
     background: #ffee58;
 }
+
+.search-input{
+    background-color: white;
+}
+
+.search-input:focus{
+    border-top: none !important;
+}
