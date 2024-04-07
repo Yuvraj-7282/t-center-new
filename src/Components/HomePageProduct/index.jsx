@@ -1,4 +1,4 @@
-import ProductDisplay from "../ProductDisplay";
+import ProductCardDisplay from "../ProductCardDisplay";
 
 // productData 
 const productData = [
@@ -76,12 +76,12 @@ const productData = [
     }
 ]
 
-function HomePageProduct() {
+function HomePageProduct({title}) {
     return (
-        <div className="mt-10">
+        <div className="my-10">
             {/* Heading  */}
             <div className="">
-                <h1 className=" text-center mb-5 text-2xl font-semibold">Bestselling Products</h1>
+                <h1 className=" text-center mb-5 text-2xl font-semibold">{title}</h1>
             </div>
 
             {/* main  */}
@@ -91,7 +91,7 @@ function HomePageProduct() {
                         {productData.map((item, index) => {
                             const { image, title, price } = item
                             return (
-                                <ProductDisplay key={index} title={title} image={image} price={price} />
+                                <ProductCardDisplay key={index} title={title} image={image} price={price} />
                             )
                         })}
                     </div>

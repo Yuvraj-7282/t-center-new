@@ -9,8 +9,8 @@ function Home() {
     <Layout>
         <HeroSection />
         <Category />
-        <HomePageProduct />
-        <Track />
+        <HomePageProduct title="Top Products"/>
+        {/* <Track /> */}
     </Layout>
   )
 }

@@ -37,7 +37,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link>
+        <Link to={'/allproducts'}>
           Products
         </Link>
       </Typography>
@@ -47,7 +47,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link>
+        <Link to={'/customize'}>
           Customize
         </Link>
       </Typography>
@@ -57,7 +57,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link>
+        <Link to={'/cart'}>
           Cart
         </Link>
       </Typography>
@@ -67,7 +67,7 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link>
+        <Link to={'/account'}>
           Account
         </Link>
       </Typography>

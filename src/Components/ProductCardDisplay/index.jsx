@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 
-function ProductDisplay({title, image, price}) {
+function ProductCardDisplay({title, image, price}) {
+  const navigate = useNavigate();
   return (
-    <div className="p-2 lg:p-4 w-2/4 h-full lg:h-full lg:w-1/4">
-            <div className="h-full border border-gray-300 rounded-xl overflow-hidden shadow-md cursor-pointer">
+    <div className="p-2 lg:p-4 w-2/4 h-fit lg:h-fit lg:w-1/4" onClick={() => {
+        navigate(`/product`)
+    }}>
+            <div className="h-full border border-gray-300  rounded-xl overflow-hidden shadow-md cursor-pointer">
                     <img
-                        className="lg:h-80  h-36 lg:w-96 w-full"
+                        className="lg:h-80 h-48 lg:w-96 w-full"
                         src={image}
                         alt="blog"
                     />
@@ -20,7 +24,7 @@ function ProductDisplay({title, image, price}) {
                         ₹{price}
                     </h1>
 
-                    <div className="flex justify-center ">
+                    <div className="flex justify-center">
                         <button className=" bg-yellow-400 hover:bg-yellow-300 text-black w-full py-[4px] rounded-lg font-bold">
                             Add To Cart
                         </button>
@@ -31,4 +35,4 @@ function ProductDisplay({title, image, price}) {
   )
 }
 
-export default ProductDisplay
+export default ProductCardDisplay
