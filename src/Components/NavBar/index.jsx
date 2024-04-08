@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import {User, ShoppingCart} from "lucide-react";
+
 import {
   Collapse,
   Typography,
@@ -47,18 +50,30 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link to={'/customize'}>
+        <Link to={'http://localhost:5174'}>
           Customize
         </Link>
       </Typography>
+
       <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link to={'/cart'}>
-          Cart
+        <Link to={'/admin'} className="flex items-center">
+          Admin
+        </Link>
+      </Typography>
+
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-bold"
+      >
+        <Link to={'/cart'} className="flex items-center">
+          <ShoppingCart /> <p className="lg:hidden ms-3">Cart</p>
         </Link>
       </Typography>
       <Typography
@@ -67,8 +82,8 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link to={'/account'}>
-          Account
+        <Link to={'/account'} className="flex items-center">
+          <User/><p className="lg:hidden ms-3">Account</p>
         </Link>
       </Typography>
     </ul>

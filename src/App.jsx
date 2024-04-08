@@ -13,6 +13,7 @@ import AllProducts from "./Pages/AllProducts";
 import Login from "./Pages/Registration/Login";
 import Register from "./Pages/Registration/Register";
 import Account from "./Pages/Account";
+import Admin from "./Pages/Admin";
 function App() {
   return (
    <div>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </Router>
    </div> 

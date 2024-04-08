@@ -38,7 +38,7 @@ function Search() {
 
   return (
     <div className='search w-full lg::w-fit relative'>
-        <input label='Search' placeholder="Search" className="search-input h-8 rounded-md px-3 shadow-md outline-black" onChange={(e) => setSearch(e.target.value)}/>
+        <input label='Search' placeholder="Search" className="w-full search-input h-8 rounded-md px-3 shadow-md outline-black" onChange={(e) => setSearch(e.target.value)}/>
         {search && 
             <div className='h-72 z-10 w-full bg-white rounded-sm shadow-md absolute px-1 overflow-y-auto overflow-x-hidden'>
 
