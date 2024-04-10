@@ -12,7 +12,7 @@ function Admin() {
     <div className='p-5'>
         <UserDetails name="yuvraj" email="syuvraj@gmail.com" />
         <Tabs className="w-full mt-10">
-            <TabList className="w-full flex justify-between">
+            <TabList className="w-full flex flex-col lg:flex-row justify-between">
                 <Tab className="w-full">
                     <AdminTab>
                         <ShoppingCart size={50}/>
@@ -21,7 +21,7 @@ function Admin() {
                     </AdminTab>
                 </Tab>
                 
-                <Tab className="mx-3 w-full">
+                <Tab className="my-3 lg:mx-3 lg:my-0 w-full">
                     <AdminTab>
                         <List size={50}/>
                         <h1 className='text-xl mt-2 font-bold'>15</h1>

@@ -61,6 +61,17 @@ function NavList() {
         color="blue-gray"
         className="p-1 font-bold"
       >
+        <Link to={'/register'} className="flex items-center">
+          Sign Up
+        </Link>
+      </Typography>
+
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-bold"
+      >
         <Link to={'/admin'} className="flex items-center">
           Admin
         </Link>

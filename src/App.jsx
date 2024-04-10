@@ -14,9 +14,13 @@ import Login from "./Pages/Registration/Login";
 import Register from "./Pages/Registration/Register";
 import Account from "./Pages/Account";
 import Admin from "./Pages/Admin";
+import AddProduct from "./Pages/Admin/AddProduct";
+import EditProduct from "./Pages/Admin/EditProduct";
+import MyState from "./Context/myState";
+
 function App() {
   return (
-   <div>
+   <MyState>
       <Router>
         <Routes>
           <Route path="/"  element={<Home />}/>
@@ -28,9 +32,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/addProduct" element={<AddProduct />} />
+          <Route path="/editProduct" element={<EditProduct />} />
         </Routes>
       </Router>
-   </div> 
+   </MyState> 
   )
 }
 

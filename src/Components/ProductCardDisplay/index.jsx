@@ -9,7 +9,7 @@ function ProductCardDisplay({title, image, price}) {
     }}>
             <div className="h-full border border-gray-300  rounded-xl overflow-hidden shadow-md cursor-pointer">
                     <img
-                        className="lg:h-80 h-48 lg:w-96 w-full"
+                        className="lg:h-80 lg:w-96"
                         src={image}
                         alt="blog"
                     />
