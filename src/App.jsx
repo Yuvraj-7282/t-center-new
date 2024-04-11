@@ -17,10 +17,13 @@ import Admin from "./Pages/Admin";
 import AddProduct from "./Pages/Admin/AddProduct";
 import EditProduct from "./Pages/Admin/EditProduct";
 import MyState from "./Context/myState";
+import {Toaster} from "react-hot-toast";
+import Loader from "./Components/Loader";
 
 function App() {
   return (
    <MyState>
+      <Loader />
       <Router>
         <Routes>
           <Route path="/"  element={<Home />}/>
@@ -36,6 +39,7 @@ function App() {
           <Route path="/editProduct" element={<EditProduct />} />
         </Routes>
       </Router>
+      <Toaster />
    </MyState> 
   )
 }

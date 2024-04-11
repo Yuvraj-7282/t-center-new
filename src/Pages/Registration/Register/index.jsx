@@ -1,11 +1,78 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { auth, db} from "../../../Firebase/config";
+import { Timestamp, addDoc, collection } from "firebase/firestore";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import toast from "react-hot-toast";
+
+import { useContext } from "react";
+import myContext from "../../../Context/myContext";
+
+import {useNavigate} from "react-router-dom";
+
 function Register() {
+    const navigate = useNavigate();
+
+    const context = useContext(myContext);
+    const {loading , setLoading} = context;
+
+    const [userSignup, setUserSignup] = useState({
+        name: "",
+        email: "",
+        password: "",
+        role: "user"
+    })
+
+
+    const userSignUpModule = async () => {
+        if (userSignup.name === "" || userSignup.email === "" || userSignup.password === "") {
+            toast.error("All Fields are required")
+        }
+
+        setLoading(true);
+
+        try{
+            const users = await createUserWithEmailAndPassword(auth, userSignup.email, userSignup.password);
+            const user = {
+                name: userSignup.name,
+                email: users.user.email,
+                uid: users.user.uid,
+                role: userSignup.role,
+                time: Timestamp.now(),
+                date: new Date().toLocaleString(
+                    "en-US",
+                    {
+                        month: "short",
+                        day: "2-digit",
+                        year: "numeric",
+                    }
+                )
+            }
+            const userReference = collection(db, "user");
+            addDoc(userReference, user);
+            setUserSignup({
+                name: "",
+                email: "",
+                password: "",
+            })
+
+            toast.success("sign up successfully");
+            setLoading(false);
+            navigate("/");
+        }
+        catch(e){
+            console.log(error);
+            setLoading(true);
+        }
+    }
+
     return (
         <div className='flex justify-center items-center h-screen'>
             {/* Login Form  */}
-            <div className="login_Form bg-yellow-200 px-1 lg:px-8 py-6 00 rounded-xl shadow-md">
+            <div className="login_Form bg-yellow-200 w-5/6 lg:w-1/4 lg:px-8 p-6 rounded-xl shadow-md">
 
                 {/* Top Heading  */}
                 <div className="mb-5">
@@ -19,7 +86,13 @@ function Register() {
                     <input
                         type="text"
                         placeholder='Full Name'
-                        className=' px-2 py-2 w-96 rounded-md outline-none shadow-md'
+                        className=' px-2 py-2 w-full rounded-md outline-none shadow-md'
+                        onChange={(e) => {
+                            setUserSignup({
+                                ...userSignup,
+                                name: e.target.value,
+                            })
+                        }}
                     />
                 </div>
 
@@ -28,7 +101,13 @@ function Register() {
                     <input
                         type="email"
                         placeholder='Email Address'
-                        className='shadow-md px-2 py-2 w-96 rounded-md outline-none'
+                        className='shadow-md px-2 py-2 w-full rounded-md outline-none'
+                        onChange={(e) => {
+                            setUserSignup({
+                                ...userSignup,
+                                email: e.target.value,
+                            })
+                        }}
                     />
                 </div>
 
@@ -37,7 +116,13 @@ function Register() {
                     <input
                         type="password"
                         placeholder='Password'
-                        className='shadow-md px-2 py-2 w-96 rounded-md outline-none '
+                        className='shadow-md px-2 py-2 w-full rounded-md outline-none '
+                        onChange={(e) => {
+                            setUserSignup({
+                                ...userSignup,
+                                password: e.target.value,
+                            })
+                        }}
                     />
                 </div>
 
@@ -46,6 +131,7 @@ function Register() {
                     <button
                         type='button'
                         className='bg-yellow-400 shadow-md hover:bg-yellow-600 w-full text-black text-center py-2 font-bold rounded-md '
+                        onClick={userSignUpModule}
                     >
                         Register
                     </button>
