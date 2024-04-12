@@ -20,6 +20,9 @@ import MyState from "./Context/myState";
 import {Toaster} from "react-hot-toast";
 import Loader from "./Components/Loader";
 
+import ProtectedRouteAdmin from "./Components/ProtectedRoute/ProtectedRouteAdmin";
+import ProtectedRouteUser from "./Components/ProtectedRoute/ProtectedRouteUser";
+
 function App() {
   return (
    <MyState>
@@ -33,8 +36,17 @@ function App() {
           <Route path="/allproducts" element={<AllProducts />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/user" element={<Account />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/user" element={
+            <ProtectedRouteUser>
+              <Account />
+            </ProtectedRouteUser>
+          } />
+          <Route path="/admin" element={
+            <ProtectedRouteAdmin>
+              <Admin />
+            </ProtectedRouteAdmin>
+          } />
+          
           <Route path="/addProduct" element={<AddProduct />} />
           <Route path="/editProduct" element={<EditProduct />} />
         </Routes>

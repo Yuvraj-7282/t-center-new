@@ -8,9 +8,10 @@ import TotalOrders from '../../Components/Admin/TotalOrders';
 import TotalProducts from '../../Components/Admin/TotalProducts';
 import TotalUsers from '../../Components/Admin/TotalUsers';
 function Admin() {
+  const user = JSON.parse(localStorage.getItem('users'));
   return (
     <div className='p-5'>
-        <UserDetails name="yuvraj" email="syuvraj@gmail.com" />
+        <UserDetails name={user?.name} email={user?.email} role={user?.role}/>
         <Tabs className="w-full mt-10">
             <TabList className="w-full flex flex-col lg:flex-row justify-between">
                 <Tab className="w-full">

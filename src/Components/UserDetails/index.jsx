@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UserDetails({name, email}) {
+function UserDetails({name, email, role}) {
   return (
     <div className="top ">
         <div className=" bg-yellow-400 py-5 rounded-xl shadow-md">
@@ -12,6 +12,7 @@ function UserDetails({name, email}) {
             <div className="">
                 <h1 className=" text-center text-lg"><span className=" font-bold">Name :</span> {name} </h1>
                 <h1 className=" text-center text-lg"><span className=" font-bold">Email :</span> {email} </h1>
+                <h1 className=" text-center text-lg"><span className=" font-bold">Role :</span> {role} </h1>
             </div>
         </div>
     </div>
