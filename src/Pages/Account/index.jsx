@@ -16,11 +16,13 @@ const products = [
 ]
 
 function Account() {
+
+    const {name , email} = JSON.parse(localStorage.getItem("users"));
     return (
         <Layout>
             <div className=" container mx-auto px-4 py-5 lg:py-8">
                 {/* Top  */}
-                <UserDetails name="yuvraj" email="yuvraj@gmail.com" />
+                <UserDetails name={name} email={email} />
 
                 {/* bottom  */}
                 <OrderInvoice products={products} />

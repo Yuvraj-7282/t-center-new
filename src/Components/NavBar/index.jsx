@@ -10,10 +10,12 @@ import {
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Search from "../Search";
-
+import toast from "react-hot-toast"
 
   
 function NavList() {
+
+  const user = JSON.parse(localStorage.getItem("users"));
   return (
     <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
@@ -55,27 +57,33 @@ function NavList() {
         </Link>
       </Typography>
 
-      <Typography
+      {!user && <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link to={'/register'} className="flex items-center">
-          Sign Up
+         <Link to={'/register'} className="flex items-center">
+          Sign up
         </Link>
-      </Typography>
+      </Typography> }
 
-      <Typography
+
+      {user && <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-bold"
+        
       >
-        <Link to={'/admin'} className="flex items-center">
-          Admin
-        </Link>
-      </Typography>
+         <Link onClick={() => {
+            localStorage.clear();
+            toast.success("logout successful");
+          }} to={'/'} className="flex items-center">
+            Sign out
+          </Link>
+      </Typography> }
+
 
       <Typography
         as="li"
@@ -87,16 +95,17 @@ function NavList() {
           <ShoppingCart /> <p className="lg:hidden ms-3">Cart</p>
         </Link>
       </Typography>
-      <Typography
+
+      {user && <Typography
         as="li"
         variant="small"
         color="blue-gray"
         className="p-1 font-bold"
       >
-        <Link to={'/account'} className="flex items-center">
+        <Link to={user?.role == "user" ? "/user" : "/admin"} className="flex items-center">
           <User/><p className="lg:hidden ms-3">Account</p>
         </Link>
-      </Typography>
+      </Typography>}
     </ul>
   );
 }

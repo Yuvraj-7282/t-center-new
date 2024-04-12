@@ -1,7 +1,67 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
+import { auth,db } from "../../../Firebase/config";
+import {collection, onSnapshot , query , where} from "firebase/firestore";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useContext, useState } from "react";
+import myContext from "../../../Context/myContext";
+import { useNavigate } from "react-router-dom";
 
+import toast from "react-hot-toast";
 function Login() {
+    const navigate = useNavigate();
+    const context = useContext(myContext);
+    const {loading , setLoading} = context;
+
+    const [userLogin,setUserLogin] = useState({
+        email: "",
+        password: ""
+    })
+    const userLoginModule = async() => {
+        setLoading(true);
+
+        if (userLogin.name === "" || userLogin.email === "" || userLogin.password === "") {
+            toast.error("All Fields are required")
+        }
+
+        try{
+            const users = await signInWithEmailAndPassword(auth, userLogin.email, userLogin.password);
+
+            const q = query(
+                collection(db, "user"),
+                where("uid" , '==' , users?.user?.uid)
+            )
+            const data = onSnapshot(q, (QuerySnapshot) => {
+                let user;
+                QuerySnapshot.forEach((doc) => user = doc.data());
+                localStorage.setItem("users" , JSON.stringify(user));
+                setUserLogin({
+                    email: "",
+                    password: ""
+                })
+    
+                toast.success("login successful");
+                setLoading(false);
+    
+                if(user.role == "user"){
+                    navigate("/user")
+                }
+                else{
+                    navigate("/admin");
+                }
+
+                return () => data;
+            })
+        }
+        catch(e) {
+            toast.error("error incurred");
+            setLoading(false);
+            console.log(error);
+            
+            
+        }
+    }
+
     return (
         <div className='flex justify-center items-center h-screen'>
             {/* Login Form  */}
@@ -20,6 +80,9 @@ function Login() {
                         type="email"
                         placeholder='Email Address'
                         className='shadow-md px-2 py-2 w-full rounded-md outline-none'
+                        onChange={(e) => {
+                            setUserLogin({...userLogin, email: e.target.value})
+                        }}
                     />
                 </div>
 
@@ -29,6 +92,9 @@ function Login() {
                         type="password"
                         placeholder='Password'
                         className='shadow-md px-2 py-2 w-full rounded-md outline-none'
+                        onChange={(e) => {
+                            setUserLogin({...userLogin, password: e.target.value})
+                        }}
                     />
                 </div>
 
@@ -37,6 +103,7 @@ function Login() {
                     <button
                         type='button'
                         className='shadow-md bg-yellow-400 text-black hover:bg-yellow-600 w-full text-center py-2 font-bold rounded-md '
+                        onClick={userLoginModule}
                     >
                         Login
                     </button>

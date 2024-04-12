@@ -64,8 +64,9 @@ function Register() {
             navigate("/");
         }
         catch(e){
+            toast.error("error incurred")
+            setLoading(false);
             console.log(error);
-            setLoading(true);
         }
     }
 
