@@ -149,6 +149,7 @@ function AddProduct() {
                             id="fileUpload"
                             type="file"
                             name="productImageUrl"
+                            accept="image/*"
                             onChange={setImage}
                             hidden
                         />

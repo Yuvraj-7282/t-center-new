@@ -1,7 +1,6 @@
 
 import {useNavigate, Link} from "react-router-dom";
 function TotalProducts(){
-
   const navigate = useNavigate();
   return (
       <div>

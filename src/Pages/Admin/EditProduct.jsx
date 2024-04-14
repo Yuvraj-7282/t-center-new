@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function EditProduct() {
   return (
-    <div>EditProduct</div>
-  )
+    <div>
+      <p>Edit Product</p>
+    </div>
+  );
 }
 
 export default EditProduct;
