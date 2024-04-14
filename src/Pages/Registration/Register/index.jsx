@@ -53,6 +53,7 @@ function Register() {
             }
             const userReference = collection(db, "user");
             addDoc(userReference, user);
+            localStorage.setItem("users" , JSON.stringify(user));
             setUserSignup({
                 name: "",
                 email: "",
