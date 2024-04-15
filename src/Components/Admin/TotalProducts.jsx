@@ -80,7 +80,12 @@ function TotalProducts() {
                   </td>
 
                   <td className="py-6 h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                    <img src={v.productImageUrl} width={80} height={80} />
+                    <img
+                      src={v.productImageUrl}
+                      alt={v.title}
+                      width={80}
+                      height={80}
+                    />
                   </td>
                   <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-green-500 cursor-pointer ">
                     <Link to="/editProduct">Edit</Link>

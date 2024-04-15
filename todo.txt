@@ -1,0 +1,9 @@
+TODO
+
+cart data from customizer in cart
+implement regex in user registeration
+add and retrieve items in wishlist
+implement paytm payment gateway
+
+
+ERRORS
