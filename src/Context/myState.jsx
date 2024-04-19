@@ -7,10 +7,9 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 function myState({ children }) {
   const [loading, setLoading] = useState(false);
   const [getProductData, setProductData] = useState([]);
-
   const getProducts = async () => {
-    setLoading(true);
     try {
+      setLoading(true);
       const q = query(collection(db, "products"), orderBy("time"));
       const data = onSnapshot(q, (querySnapShot) => {
         const productArr = [];
@@ -29,6 +28,7 @@ function myState({ children }) {
   useEffect(() => {
     getProducts();
   }, []);
+
   return (
     <MyContext.Provider value={{ loading, setLoading, getProductData }}>
       {children}

@@ -1,10 +1,6 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import React from 'react'
+import React from "react";
 import Home from "./Pages/Home";
 import NoPage from "./Pages/NoPage";
 import Product from "./Pages/Product";
@@ -17,7 +13,7 @@ import Admin from "./Pages/Admin";
 import AddProduct from "./Pages/Admin/AddProduct";
 import EditProduct from "./Pages/Admin/EditProduct";
 import MyState from "./Context/myState";
-import {Toaster} from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Loader from "./Components/Loader";
 
 import ProtectedRouteAdmin from "./Components/ProtectedRoute/ProtectedRouteAdmin";
@@ -25,35 +21,103 @@ import ProtectedRouteUser from "./Components/ProtectedRoute/ProtectedRouteUser";
 
 function App() {
   return (
-   <MyState>
-      <Loader />
+    <MyState>
       <Router>
         <Routes>
-          <Route path="/"  element={<Home />}/>
-          <Route path="/*" element={<NoPage />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/allproducts" element={<AllProducts />} />
+          {/* all  */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/user" element={
-            <ProtectedRouteUser>
-              <Account />
-            </ProtectedRouteUser>
-          } />
-          <Route path="/admin" element={
-            <ProtectedRouteAdmin>
-              <Admin />
-            </ProtectedRouteAdmin>
-          } />
-          
-          <Route path="/addProduct" element={<AddProduct />} />
-          <Route path="/editProduct" element={<EditProduct />} />
+
+          {/* user  */}
+          <Route
+            path="/"
+            element={
+              <ProtectedRouteUser>
+                <Home />
+              </ProtectedRouteUser>
+            }
+          />
+          <Route
+            path="/*"
+            element={
+              <ProtectedRouteUser>
+                <NoPage />
+              </ProtectedRouteUser>
+            }
+          />
+          <Route
+            path="/product"
+            element={
+              <ProtectedRouteUser>
+                <Product />
+              </ProtectedRouteUser>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRouteUser>
+                <Cart />
+              </ProtectedRouteUser>
+            }
+          />
+          <Route
+            path="/allproducts"
+            element={
+              <ProtectedRouteUser>
+                <AllProducts />
+              </ProtectedRouteUser>
+            }
+          />
+
+          <Route
+            path="/search/:items"
+            element={
+              <ProtectedRouteUser>
+                <AllProducts />
+              </ProtectedRouteUser>
+            }
+          />
+
+          {/* admin */}
+          <Route
+            path="/user"
+            element={
+              <ProtectedRouteUser>
+                <Account />
+              </ProtectedRouteUser>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRouteAdmin>
+                <Admin />
+              </ProtectedRouteAdmin>
+            }
+          />
+
+          <Route
+            path="/addProduct"
+            element={
+              <ProtectedRouteAdmin>
+                <AddProduct />
+              </ProtectedRouteAdmin>
+            }
+          />
+          <Route
+            path="/editProduct/:id"
+            element={
+              <ProtectedRouteAdmin>
+                <EditProduct />
+              </ProtectedRouteAdmin>
+            }
+          />
         </Routes>
       </Router>
       <Toaster />
-   </MyState> 
-  )
+    </MyState>
+  );
 }
 
-export default App
+export default App;

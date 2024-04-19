@@ -8,6 +8,7 @@ import Loader from "../../Components/Loader";
 import myContext from "../../Context/myContext";
 import { v4 } from "uuid";
 import { Image } from "lucide-react";
+import { encode } from "html-entities";
 
 const categoryList = [
   {
@@ -50,6 +51,7 @@ function AddProduct() {
   // file upload function
   const [fileUpload, setFileUpload] = useState(null);
   const setImage = (e) => {
+    setLoading(true);
     const imageUpload = e.target.files[0];
     if (imageUpload == null) return;
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
@@ -66,6 +68,7 @@ function AddProduct() {
         });
         toast.success(`Image uploaded successfully`);
         setFileUpload(e.target.files[0]);
+        setLoading(false);
       })
       .catch((e) => {
         toast.error(e.message);
@@ -85,13 +88,12 @@ function AddProduct() {
       return toast.error("all fields are required");
     }
 
-    setLoading(true);
     try {
+      setLoading(true);
       const productRef = collection(db, "products");
       await addDoc(productRef, product);
       toast.success("Add product successfully");
       navigate("/admin");
-      setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -100,8 +102,8 @@ function AddProduct() {
   };
   return (
     <div>
+      <Loader />
       <div className="flex justify-center items-center h-screen">
-        {loading && <Loader />}
         {/* Login Form  */}
         <div className="login_Form bg-yellow-200 px-8 py-6 rounded-xl shadow-md">
           {/* Top Heading  */}
@@ -120,7 +122,7 @@ function AddProduct() {
               onChange={(e) => {
                 setProduct({
                   ...product,
-                  title: e.target.value,
+                  title: encode(e.target.value, { mode: "nonAsciiPrintable" }),
                 });
               }}
               placeholder="Product Title"
@@ -137,7 +139,7 @@ function AddProduct() {
               onChange={(e) => {
                 setProduct({
                   ...product,
-                  price: e.target.value,
+                  price: encode(e.target.value, { mode: "nonAsciiPrintable" }),
                 });
               }}
               placeholder="Product Price"
@@ -171,7 +173,9 @@ function AddProduct() {
               onChange={(e) => {
                 setProduct({
                   ...product,
-                  category: e.target.value,
+                  category: encode(e.target.value, {
+                    mode: "nonAsciiPrintable",
+                  }),
                 });
               }}
               className="w-full px-1 py-2 text-black bg-white shadow-md rounded-md outline-none  "
@@ -199,7 +203,9 @@ function AddProduct() {
               onChange={(e) => {
                 setProduct({
                   ...product,
-                  description: e.target.value,
+                  description: encode(e.target.value, {
+                    mode: "nonAsciiPrintable",
+                  }),
                 });
               }}
               name="description"

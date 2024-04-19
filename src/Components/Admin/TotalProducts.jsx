@@ -1,21 +1,35 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import myContext from "../../Context/myContext";
 import Loader from "../Loader";
+import { auth, db } from "../../Firebase/config";
+import { deleteDoc, doc } from "firebase/firestore";
 function TotalProducts() {
   const context = useContext(myContext);
 
-  const { loading, getProductData } = context;
+  const { loading, setLoading, getProductData } = context;
 
   const navigate = useNavigate();
+
+  const handleDelete = async (item) => {
+    try {
+      setLoading(true);
+      const itemRef = doc(db, "products", item);
+      await deleteDoc(itemRef, item);
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+      toast.error("Error incurred");
+    }
+  };
 
   return (
     <div>
       {/* Loading  */}
-      <div className="flex justify-center relative top-20">
-        {loading && <Loader />}
-      </div>
+      <Loader />
       <div className="py-5 flex justify-between items-center">
         {/* text  */}
         <h1 className=" text-xl text-pink-300 font-bold">All Product</h1>
@@ -88,10 +102,10 @@ function TotalProducts() {
                     />
                   </td>
                   <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-green-500 cursor-pointer ">
-                    <Link to="/editProduct">Edit</Link>
+                    <Link to={`/editProduct/${v.id}`}>Edit</Link>
                   </td>
                   <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-red-500 cursor-pointer ">
-                    Delete
+                    <span onClick={() => handleDelete(v.id)}>Delete</span>
                   </td>
                 </tr>
               );
