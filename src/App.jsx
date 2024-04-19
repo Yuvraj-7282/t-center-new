@@ -14,8 +14,7 @@ import AddProduct from "./Pages/Admin/AddProduct";
 import EditProduct from "./Pages/Admin/EditProduct";
 import MyState from "./Context/myState";
 import { Toaster } from "react-hot-toast";
-import Loader from "./Components/Loader";
-
+import SearchProducts from "./Pages/SearchProducts";
 import ProtectedRouteAdmin from "./Components/ProtectedRoute/ProtectedRouteAdmin";
 import ProtectedRouteUser from "./Components/ProtectedRoute/ProtectedRouteUser";
 
@@ -74,7 +73,7 @@ function App() {
             path="/search/:items"
             element={
               <ProtectedRouteUser>
-                <AllProducts />
+                <SearchProducts />
               </ProtectedRouteUser>
             }
           />
