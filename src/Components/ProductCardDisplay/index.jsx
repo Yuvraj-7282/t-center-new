@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { plain } from "../../Assets";
-import { useContext } from "react";
-import myContext from "../../Context/myContext";
-
-function ProductCardDisplay({ title, image, price }) {
+function ProductCardDisplay(props) {
+  const { title, image, price } = props;
   const [isLoaded, setIsLoaded] = useState(false);
 
   const navigate = useNavigate();
@@ -12,7 +10,7 @@ function ProductCardDisplay({ title, image, price }) {
     <div
       className="p-2 lg:p-4 w-2/4 h-fit lg:h-fit lg:w-1/4"
       onClick={() => {
-        navigate(`/product`);
+        navigate(`/product/${props.id}`);
       }}
     >
       <div className="h-full border border-gray-300  rounded-xl overflow-hidden shadow-md cursor-pointer">

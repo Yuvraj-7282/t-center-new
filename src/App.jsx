@@ -45,7 +45,7 @@ function App() {
             }
           />
           <Route
-            path="/product"
+            path="/product/:id"
             element={
               <ProtectedRouteUser>
                 <Product />

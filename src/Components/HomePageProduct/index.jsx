@@ -28,6 +28,7 @@ function HomePageProduct({ title, productData }) {
                     title={item.title}
                     image={item.productImageUrl}
                     price={item.price}
+                    id={item.id}
                   />
                 );
               })}

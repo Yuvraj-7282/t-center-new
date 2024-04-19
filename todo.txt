@@ -1,8 +1,9 @@
 TODO
 
 get and remove total users
+implement cart system
 cart data from customizer in cart
 implement paytm payment gateway
-get and remote total orders
+get and remove orders history (both admin and user)
 
 ERRORS
