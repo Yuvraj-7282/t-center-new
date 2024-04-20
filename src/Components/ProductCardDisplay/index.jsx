@@ -14,10 +14,10 @@ function ProductCardDisplay(props) {
       }}
     >
       <div className="h-full border border-gray-300  rounded-xl overflow-hidden shadow-md cursor-pointer">
-        {!isLoaded && <img className="lg:h-70 lg:w-72 p-6" src={plain} />}
+        {!isLoaded && <img className="lg:h-[250px] lg:w-80 p-6" src={plain} />}
 
         <img
-          className={`lg:h-72 lg:w-80 ${!isLoaded && "hidden"}`}
+          className={`lg:h-[250px] lg:w-80 ${!isLoaded && "hidden"}`}
           src={image}
           alt="shirt"
           onLoad={() => {

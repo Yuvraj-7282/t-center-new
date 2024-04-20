@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import myContext from "../../Context/myContext";
 import HomePageProduct from "../../Components/HomePageProduct";
+import { scrollUp } from "../../hooks/useScroll";
 
 import Layout from "../../Components/Layout";
 function SearchProducts() {
+  scrollUp();
   let { items } = useParams();
   console.log(items);
   let context = useContext(myContext);

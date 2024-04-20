@@ -7,9 +7,12 @@ import { plain } from "../../Assets";
 import { useContext } from "react";
 import myContext from "../../Context/myContext";
 import Loader from "../Loader";
+import { useCart } from "../../hooks/useCart";
+import toast from "react-hot-toast";
 function ProductInfo() {
   scrollUp();
 
+  const { addItemToCart } = useCart();
   const context = useContext(myContext);
 
   const { setLoading } = context;
@@ -74,7 +77,17 @@ function ProductInfo() {
                 <br />
                 <br />
                 <div className="flex flex-wrap items-center mb-6">
-                  <button className="w-full px-4 py-3 text-center text-black bg-yellow-300 border hover:bg-yellow-400 hover:text-gray-100 rounded-xl">
+                  <button
+                    className="w-full px-4 py-3 text-center text-black bg-yellow-300 border hover:bg-yellow-400 hover:text-gray-100 rounded-xl"
+                    onClick={() => {
+                      try {
+                        addItemToCart({ ...productData, id: id });
+                        toast.success("Added to cart");
+                      } catch (e) {
+                        toast.error(e.message);
+                      }
+                    }}
+                  >
                     Add to cart
                   </button>
                 </div>

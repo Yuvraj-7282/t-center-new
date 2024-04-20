@@ -104,8 +104,8 @@ function AddProduct() {
     <div>
       <Loader />
       <div className="flex justify-center items-center h-screen">
-        {/* Login Form  */}
-        <div className="login_Form bg-yellow-200 px-8 py-6 rounded-xl shadow-md">
+        {/* add form */}
+        <div className="login_Form bg-yellow-200 w-[90vw] lg:w-96 px-8 py-6 rounded-xl shadow-md">
           {/* Top Heading  */}
           <div className="mb-5">
             <h2 className="text-center text-2xl font-bold text-black-500 ">
@@ -114,7 +114,7 @@ function AddProduct() {
           </div>
 
           {/* title  */}
-          <div className="mb-3">
+          <div className="mb-3 w-full">
             <input
               type="text"
               name="title"
@@ -126,7 +126,7 @@ function AddProduct() {
                 });
               }}
               placeholder="Product Title"
-              className="bg-white shadow-md px-2 py-2 w-96 rounded-md outline-none placeholder-grey-300"
+              className="bg-white shadow-md px-2 py-2 w-full rounded-md outline-none placeholder-grey-300"
             />
           </div>
 
@@ -143,15 +143,15 @@ function AddProduct() {
                 });
               }}
               placeholder="Product Price"
-              className="bg-white shadow-md px-2 py-2 w-96 rounded-md outline-none placeholder-grey-300"
+              className="bg-white shadow-md px-2 py-2 w-full rounded-md outline-none placeholder-grey-300"
             />
           </div>
 
           {/* file upload */}
-          <div className="mb-3 w-96">
+          <div className="mb-3 w-full">
             <label
               htmlFor="fileUpload"
-              className="bg-white text-gray-500 shadow-md px-2 py-2 rounded-md outline-none placeholder-grey-300 w-full cursor-pointer flex items-center"
+              className="bg-white text-gray-500 shadow-md px-2 py-2 rounded-md outline-none placeholder-grey-300 cursor-pointer flex items-center w-full"
             >
               <Image size={20} />
               &nbsp;{fileUpload ? `${fileUpload.name}` : "Choose Product Image"}

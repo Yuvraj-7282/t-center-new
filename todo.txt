@@ -1,7 +1,10 @@
 TODO
 
-get and remove total users
 implement cart system
+- set up redux
+- increment cart items
+- show price in both orderCard and cartItem
+get and remove total users
 cart data from customizer in cart
 implement paytm payment gateway
 get and remove orders history (both admin and user)
