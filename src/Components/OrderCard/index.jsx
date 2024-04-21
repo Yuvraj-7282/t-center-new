@@ -3,10 +3,12 @@ import { useCart } from "../../hooks/useCart";
 function OrderCard(products) {
   const { getCartItems } = useCart();
 
-  let sumPrice = getCartItems().reduce(
-    (total, current) => total + Number(current.price),
-    0
-  );
+  let sumPrice = getCartItems()
+    ? getCartItems().reduce(
+        (total, current) => total + Number(current.price),
+        0
+      )
+    : 0;
   const totalAmount = sumPrice - products.discount;
   return (
     <div
@@ -23,7 +25,7 @@ function OrderCard(products) {
         <dl className=" space-y-1 px-2 py-4">
           <div className="flex items-center justify-between">
             <dt className="text-sm text-gray-800">
-              {sumPrice} ({getCartItems().length} item)
+              {sumPrice} ({getCartItems() ? getCartItems().length : 0} item)
             </dt>
             <dd className="text-sm font-medium text-gray-900">₹ {sumPrice}</dd>
           </div>

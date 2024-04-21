@@ -6,9 +6,7 @@ import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 
 import { Link } from "react-router-dom";
 
-import TotalOrders from "../../Components/Admin/TotalOrders";
 import TotalProducts from "../../Components/Admin/TotalProducts";
-import TotalUsers from "../../Components/Admin/TotalUsers";
 
 function Admin() {
   const user = JSON.parse(localStorage.getItem("users"));

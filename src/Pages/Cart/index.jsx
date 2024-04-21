@@ -24,15 +24,16 @@ const Cart = () => {
                 Items in your shopping cart
               </h2>
               <ul role="list" className="divide-y divide-gray-200">
-                {products.map((product, index) => (
-                  <CartItem
-                    key={index}
-                    name={product.title}
-                    imageSrc={product.productImageUrl}
-                    price={product.price}
-                    id={product.id}
-                  />
-                ))}
+                {products &&
+                  products.map((product, index) => (
+                    <CartItem
+                      key={index}
+                      name={product.title}
+                      imageSrc={product.productImageUrl}
+                      price={product.price}
+                      id={product.id}
+                    />
+                  ))}
               </ul>
             </section>
             {/* Order summary */}
