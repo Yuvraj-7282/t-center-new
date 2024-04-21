@@ -1,7 +1,13 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useCart } from "../../hooks/useCart";
 function OrderCard(products) {
-  const totalAmount = products.price - products.discount;
+  const { getCartItems } = useCart();
+
+  let sumPrice = getCartItems().reduce(
+    (total, current) => total + Number(current.price),
+    0
+  );
+  const totalAmount = sumPrice - products.discount;
   return (
     <div
       aria-labelledby="summary-heading"
@@ -17,11 +23,9 @@ function OrderCard(products) {
         <dl className=" space-y-1 px-2 py-4">
           <div className="flex items-center justify-between">
             <dt className="text-sm text-gray-800">
-              {products.price} ({products.items} item)
+              {sumPrice} ({getCartItems().length} item)
             </dt>
-            <dd className="text-sm font-medium text-gray-900">
-              ₹ {products.price}
-            </dd>
+            <dd className="text-sm font-medium text-gray-900">₹ {sumPrice}</dd>
           </div>
           <div className="flex items-center justify-between pt-4">
             <dt className="flex items-center text-sm text-gray-800">

@@ -4,7 +4,7 @@ import myContext from "../../Context/myContext";
 import Loader from "../Loader";
 // productData
 
-function HomePageProduct({ title, productData }) {
+function HomePageProduct({ title, productData, limit = 100 }) {
   const context = useContext(myContext);
   const { loading } = context;
 
@@ -23,13 +23,15 @@ function HomePageProduct({ title, productData }) {
             <div className="flex flex-wrap -m-4">
               {productData.map((item, index) => {
                 return (
-                  <ProductCardDisplay
-                    key={index}
-                    title={item.title}
-                    image={item.productImageUrl}
-                    price={item.price}
-                    id={item.id}
-                  />
+                  index < limit && (
+                    <ProductCardDisplay
+                      key={index}
+                      title={item.title}
+                      image={item.productImageUrl}
+                      price={item.price}
+                      id={item.id}
+                    />
+                  )
                 );
               })}
             </div>

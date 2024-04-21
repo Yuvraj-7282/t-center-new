@@ -17,7 +17,7 @@ function CartItem(product) {
           />
         </div>
 
-        <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+        <div className="ml-4 flex flex-1 flex-col justify-betweensm:ml-6">
           <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
             <div>
               <div className="flex justify-between">
@@ -27,7 +27,7 @@ function CartItem(product) {
                   </a>
                 </h3>
               </div>
-              <div className="mt-1 flex">
+              <div className="mt-1 flex items-center">
                 <p className="text-sm font-medium text-gray-900">
                   ₹ {product.price}
                 </p>

@@ -15,7 +15,7 @@ const categoryList = [
     name: "graphic",
   },
   {
-    name: "plane",
+    name: "plain",
   },
   {
     name: "stripped",

@@ -16,7 +16,11 @@ function Home() {
     <Layout>
       <HeroSection />
       <Category />
-      <HomePageProduct title="Top Products" productData={getProductData} />
+      <HomePageProduct
+        title="Top Products"
+        productData={getProductData}
+        limit={5}
+      />
       {/* <Track /> */}
     </Layout>
   );

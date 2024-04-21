@@ -20,7 +20,6 @@ function Search() {
     .filter((obj) => {
       return (
         obj.title.toLowerCase().includes(search.toLowerCase()) ||
-        obj.category.toLowerCase().includes(search.toLowerCase()) ||
         obj.price.toLowerCase().includes(search.toLowerCase())
       );
     })
@@ -46,15 +45,12 @@ function Search() {
               {filteredData.map((item, index) => (
                 <div
                   key={index}
-                  className="m-3 flex  justify-center items-center cursor-pointer hover:opacity-70 transition-all duration-75"
+                  className="m-3 flex  justify-between items-center cursor-pointer hover:opacity-70 transition-all duration-75"
                   onClick={() => {
                     navigate(`/search/${item.title}`);
                   }}
                 >
-                  <p className="px-2 border-e border-gray-500">{item.title}</p>
-                  <p className="px-2 border-e border-gray-500">
-                    {item.category}
-                  </p>
+                  <p className="px-2">{item.title}</p>
                   <p className="px-2">₹ {item.price}</p>
                 </div>
               ))}

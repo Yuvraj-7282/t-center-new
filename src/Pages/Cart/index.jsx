@@ -36,7 +36,7 @@ const Cart = () => {
               </ul>
             </section>
             {/* Order summary */}
-            <OrderCard price={52000} items={3} discount={30000} dc={0} />
+            <OrderCard discount={200} dc={0} />
           </form>
         </div>
       </div>
